@@ -28,6 +28,7 @@ public class MainGUI extends javax.swing.JFrame {
     private File f;
     private File oFile;
     private boolean open = true;
+    private String type;
     /**
      * Creates new form MainGUI
      */
@@ -359,8 +360,12 @@ public class MainGUI extends javax.swing.JFrame {
         if (returnVal == JFileChooser.APPROVE_OPTION) {
         oFile = openFile.getSelectedFile();
         String s = oFile.getPath();
+    int i = s.lastIndexOf('.');
+    if (i > 0) {
+    type = s.substring(i+1);
+    }
         s = s.substring(0,s.length()-4);
-        s = s + "-c.png";
+        s = s + "-c." + type;
         f = new File(s);
        copyFile();
 
